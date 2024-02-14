@@ -5,6 +5,7 @@
     --primary: rgb(254, 44, 85);
     --black: #000;
     --white: #fff;
+    --text-color: rgb(22, 24, 35);
 
     //DefaultLayout
     --default-layout-width: 1406px;
@@ -36,5 +37,6 @@ input,
 }
 
 a[href] {
+    color: var(--text-color);
     text-decoration: none;
 }

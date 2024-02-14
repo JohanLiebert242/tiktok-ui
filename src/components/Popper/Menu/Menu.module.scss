@@ -1,0 +1,22 @@
+.menu-list {
+    min-width: 223px;
+}
+
+.menu-popper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 0 !important;
+    font-weight: 600;
+    border-radius: 0 !important;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}

@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faSpinner,
+    faMagnifyingGlass,
+    faPlus,
+    faEllipsisVertical,
+    faLanguage,
+    faMoon,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
 import styles from './Header.module.scss';
@@ -9,8 +17,38 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
+import { faCircleQuestion, faKeyboard, faLightbulb } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'Trung tâm Nhà sáng tạo LIVE',
+        link: 'https://www.tiktok.com/live/creators/vi-VN/?enter_from=more&lang=vi-VN&region=VN',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'Tiếng Việt',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        link: '/feedback',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt trên bàn phím',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Chế độ tối',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -60,6 +98,10 @@ function Header() {
                     <Button primary target="_blank">
                         Đăng nhập
                     </Button>
+
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>
+                    </Menu>
                 </div>
             </div>
         </header>
