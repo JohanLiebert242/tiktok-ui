@@ -9,7 +9,6 @@ import {
     faEllipsisVertical,
     faLanguage,
     faMoon,
-    faVideo,
     faGear,
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +31,7 @@ import {
     faPaperPlane,
     faUser,
 } from '@fortawesome/free-regular-svg-icons';
-import { faBitcoin, faViadeo } from '@fortawesome/free-brands-svg-icons';
+import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -111,8 +110,9 @@ const CURRENT_ITEMS = [
     ...MENU_ITEMS,
     {
         icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
-        title: 'Phản hồi và trợ giúp',
-        link: '/feedback',
+        title: 'Đăng xuất',
+        link: '/home',
+        separate: true
     },
 ];
 
@@ -174,12 +174,12 @@ function Header() {
                     </Button>
                     {currentUser ? (
                         <>
-                            <Tippy trigger="click" content="Tin nhắn" placement="bottom" delay={[]}>
+                            <Tippy content="Tin nhắn" placement="bottom" >
                                 <button className={cx('actions-btn')}>
                                     <FontAwesomeIcon icon={faPaperPlane} />
                                 </button>
                             </Tippy>
-                            <Tippy trigger="click" content="Hộp thư">
+                            <Tippy content="Hộp thư">
                                 <button className={cx('actions-btn')}>
                                     <FontAwesomeIcon icon={faMessage} />
                                 </button>
