@@ -9,8 +9,13 @@ import {
     faEllipsisVertical,
     faLanguage,
     faMoon,
+    faVideo,
+    faGear,
+    faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -18,7 +23,16 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import { faCircleQuestion, faKeyboard, faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import {
+    faBookmark,
+    faCircleQuestion,
+    faKeyboard,
+    faLightbulb,
+    faMessage,
+    faPaperPlane,
+    faUser,
+} from '@fortawesome/free-regular-svg-icons';
+import { faBitcoin, faViadeo } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -32,20 +46,20 @@ const MENU_ITEMS = [
         icon: <FontAwesomeIcon icon={faLanguage} />,
         title: 'Tiếng Việt',
         children: {
-            title: "Ngôn ngữ",
+            title: 'Ngôn ngữ',
             data: [
                 {
-                    type: "language",
+                    type: 'language',
                     code: 'vi',
-                    title: "Tiếng Việt"
+                    title: 'Tiếng Việt',
                 },
                 {
-                    type: "language",
+                    type: 'language',
                     code: 'en',
-                    title: "English"
-                }
-            ]
-        }
+                    title: 'English',
+                },
+            ],
+        },
     },
 
     {
@@ -65,8 +79,46 @@ const MENU_ITEMS = [
     },
 ];
 
+const CURRENT_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'Xem hồ sơ',
+        link: '/profile',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faBookmark} />,
+        title: 'Yêu thích',
+        link: '/profile',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faBitcoin} />,
+        title: 'LIVE Studio',
+        link: 'https://www.tiktok.com/studio/download?enter_from=profile',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Cài đặt',
+        link: '/setting',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        link: '/feedback',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+        title: 'Phản hồi và trợ giúp',
+        link: '/feedback',
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+    const currentUser = true;
 
     useEffect(() => {
         setTimeout(() => {
@@ -75,15 +127,14 @@ function Header() {
     }, []);
 
     //Handle Logic
-    const handleMenuChange = menuItem => {
-        switch(menuItem.type) {
-            case "language":
-                
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
                 break;
             default:
-                throw new Error('Invalid type')
+                throw new Error('Invalid type');
         }
-    }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -91,7 +142,7 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok"></img>
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -116,17 +167,42 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
                 <div className={cx('actions')}>
                     <Button className={cx('iconBtn')} leftIcon={<FontAwesomeIcon icon={faPlus} />} target="_blank">
                         Tải lên
                     </Button>
-                    <Button primary target="_blank">
-                        Đăng nhập
-                    </Button>
+                    {currentUser ? (
+                        <>
+                            <Tippy trigger="click" content="Tin nhắn" placement="bottom" delay={[]}>
+                                <button className={cx('actions-btn')}>
+                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                </button>
+                            </Tippy>
+                            <Tippy trigger="click" content="Hộp thư">
+                                <button className={cx('actions-btn')}>
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button primary target="_blank">
+                                Đăng nhập
+                            </Button>
+                        </>
+                    )}
 
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>
+                    <Menu items={CURRENT_ITEMS} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <img
+                                src="https://i.pinimg.com/564x/bd/6a/9f/bd6a9fd113346102a6b52dea650aa4ae.jpg"
+                                alt="Nguyễn Thành Long"
+                                className={cx('user-avatar')}
+                            />
+                        ) : (
+                            <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>
+                        )}
                     </Menu>
                 </div>
             </div>

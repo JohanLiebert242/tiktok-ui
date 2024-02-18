@@ -9,13 +9,15 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Menu({ items = [], children, onChange }) {
+const defaultFn = () => {};
+
+function Menu({ items = [], children, onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
     const handleHoverOutOfMenu = () => {
         setHistory([history[0]]);
-    }
+    };
 
     const renderItem = () => {
         return current.data.map((item, index) => {
@@ -40,6 +42,7 @@ function Menu({ items = [], children, onChange }) {
     return (
         <Tippy
             placement="bottom-end"
+            visible
             interactive
             onHide={handleHoverOutOfMenu}
             delay={[0, 700]}
