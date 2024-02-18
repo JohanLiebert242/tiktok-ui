@@ -31,6 +31,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
         title: 'Tiếng Việt',
+        children: {
+            title: "Ngôn ngữ",
+            data: [
+                {
+                    type: "language",
+                    code: 'vi',
+                    title: "Tiếng Việt"
+                },
+                {
+                    type: "language",
+                    code: 'en',
+                    title: "English"
+                }
+            ]
+        }
     },
 
     {
@@ -58,6 +73,17 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    //Handle Logic
+    const handleMenuChange = menuItem => {
+        switch(menuItem.type) {
+            case "language":
+                
+                break;
+            default:
+                throw new Error('Invalid type')
+        }
+    }
 
     return (
         <header className={cx('wrapper')}>
@@ -99,7 +125,7 @@ function Header() {
                         Đăng nhập
                     </Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>
                     </Menu>
                 </div>
