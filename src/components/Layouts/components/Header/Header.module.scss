@@ -18,104 +18,7 @@
     padding: 0 var(--default-layout-horizontal-spacer);
 }
 
-.search-result,
-.search {
-    width: 500px;
-}
-
-.search-title {
-    font-size: 1.4rem;
-    color: rgba(22, 24, 35, 0.5);
-    padding: 5px 12px;
-    line-height: 18px;
-    font-weight: 600;
-}
-
-.search {
-    --search-btn-bg: rgba(22, 24, 36, 0.06);
-    --search-btn-color: rgba(22, 24, 35, 1);
-
-    height: var(--search-height);
-    background: rgba(22, 24, 35, 0.06);
-
-    padding-left: 16px;
-    border-radius: var(--search-border-radius);
-    border: 1px solid transparent;
-
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    &:focus-within,
-    &:hover {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-
-    &:focus-within .search-btn {
-        background: var(--search-btn-bg);
-    }
-
-    &:hover .search-btn {
-        background: var(--search-btn-bg);
-    }
-
-    &:not(:placeholder-shown) .search-btn {
-        color: var(--search-btn-color);
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 52px;
-
-        width: 1px;
-        height: calc(var(--search-height) - var(--search-spacer) * 2);
-        background: rgba(22, 24, 35, 0.12);
-    }
-
-    input {
-        position: relative;
-        height: 100%;
-
-        font-size: 1.6rem;
-        background: transparent;
-        flex: 1;
-        caret-color: var(--primary-color);
-
-        &:hover ~ .search-btn {
-            color: var(--search-btn-color);
-        }
-    }
-}
-
-.clear,
-.loading {
-    position: absolute;
-    right: calc(var(--search-button-width) + 13px);
-    color: rgba(22, 24, 35, 0.34);
-}
-
-.search-btn {
-    width: var(--search-button-width);
-    height: var(--search-height);
-
-    font-size: 1.8rem;
-    color: rgba(22, 24, 35, 0.34);
-
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-
-    &:hover {
-        color: var(--search-btn-color);
-        background: var(--search-btn-bg);
-        cursor: pointer;
-    }
-}
-
 //Actions
-
 .actions {
     display: flex;
     align-items: center;
@@ -152,7 +55,7 @@
     position: absolute;
     top: -20%;
     right: -10%;
-    
+
     min-width: 20px;
     height: 20px;
     padding: 0px 6px;
