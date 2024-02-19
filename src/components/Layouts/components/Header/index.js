@@ -22,16 +22,10 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
-import {
-    faBookmark,
-    faCircleQuestion,
-    faKeyboard,
-    faLightbulb,
-    faMessage,
-    faPaperPlane,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
+import { faBookmark, faCircleQuestion, faKeyboard, faLightbulb, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
+import { MessageIcon, NotificationIcon } from '~/components/Icons';
+import Images from '~/components/Images';
 
 const cx = classNames.bind(styles);
 
@@ -112,7 +106,7 @@ const CURRENT_ITEMS = [
         icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
         title: 'Đăng xuất',
         link: '/home',
-        separate: true
+        separate: true,
     },
 ];
 
@@ -174,14 +168,15 @@ function Header() {
                     </Button>
                     {currentUser ? (
                         <>
-                            <Tippy content="Tin nhắn" placement="bottom" >
+                            <Tippy content="Tin nhắn" placement="bottom">
                                 <button className={cx('actions-btn')}>
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy content="Hộp thư">
                                 <button className={cx('actions-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <NotificationIcon />
+                                    <sup className={cx('supBadge')}>17</sup>
                                 </button>
                             </Tippy>
                         </>
@@ -195,10 +190,11 @@ function Header() {
 
                     <Menu items={CURRENT_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
-                                src="https://i.pinimg.com/564x/bd/6a/9f/bd6a9fd113346102a6b52dea650aa4ae.jpg"
+                            <Images
+                                src="https://i.pinimg.com/564x/3e/46/61/3e4661317a1ea9d4fdddcb48712d21f2.jpg"
                                 alt="Nguyễn Thành Long"
                                 className={cx('user-avatar')}
+                                fallback="https://i.pinimg.com/564x/44/0f/13/440f137616e360f94ad235246205c8ae.jpg"
                             />
                         ) : (
                             <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>

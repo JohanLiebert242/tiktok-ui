@@ -141,10 +141,28 @@
 }
 
 .actions-btn {
+    position: relative;
     font-size: 2.2rem;
     padding-left: 16px;
-    padding-right: 12px;
+    padding-right: 4px;
     cursor: pointer;
+}
+
+.supBadge {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    
+    min-width: 20px;
+    height: 20px;
+    padding: 0px 6px;
+    border-radius: 10px;
+    color: var(--white);
+
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    background: var(--primary);
 }
 
 .user-avatar {
