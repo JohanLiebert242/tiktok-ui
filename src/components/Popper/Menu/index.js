@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ items = [], children, onChange = defaultFn }) {
+function Menu({ items = [], children, hideOnClick = 'false', onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -41,6 +41,7 @@ function Menu({ items = [], children, onChange = defaultFn }) {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick} // Truyền qua props vì có menu ta muốn click ẩn, có cái muốn click vẫn hiện
             placement="bottom-end"
             interactive
             offset={[15, 12]}
