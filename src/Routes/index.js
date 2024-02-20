@@ -5,7 +5,7 @@ import { HeaderOnly } from '~/components/Layouts';
 import Following from '~/Pages/Following';
 import Home from '~/Pages/Home';
 import Upload from '~/Pages/Upload';
-import Profile from '~/Pages/Profile'
+import Profile from '~/Pages/Profile';
 
 //Public Routes
 const publicRoutes = [
@@ -23,10 +23,10 @@ const publicRoutes = [
         layout: HeaderOnly,
     },
     {
-        path: '/profile',
+        path: '/:nickname',
         component: Profile,
-        layout: null
-    }
+        layout: null,
+    },
 ];
 
 const privateRoutes = [];
