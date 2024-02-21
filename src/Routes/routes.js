@@ -7,6 +7,7 @@ import Following from '~/Pages/Following';
 import Home from '~/Pages/Home';
 import Upload from '~/Pages/Upload';
 import Profile from '~/Pages/Profile';
+import Live from '~/Pages/Live';
 
 //Public Routes
 const publicRoutes = [
@@ -26,6 +27,10 @@ const publicRoutes = [
     {
         path: config.routes.profile,
         component: Profile,
+    },
+    {
+        path: config.routes.live,
+        component: Live,
     },
 ];
 
