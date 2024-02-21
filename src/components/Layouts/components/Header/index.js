@@ -20,9 +20,8 @@ import { faBookmark, faCircleQuestion, faKeyboard, faLightbulb, faUser } from '@
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import { MessageIcon, NotificationIcon } from '~/components/Icons';
 import Images from '~/components/Images';
-import Search from '~/components/Search'
+import Search from '~/components/Search';
 import { Link } from 'react-router-dom';
-
 
 const cx = classNames.bind(styles);
 
@@ -126,7 +125,6 @@ function Header() {
                 <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok"></img>
                 </Link>
-
 
                 <Search />
 
