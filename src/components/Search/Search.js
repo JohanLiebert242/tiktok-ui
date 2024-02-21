@@ -19,7 +19,7 @@ function Search() {
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
-    const debounced = useDebounce(searchValue, 800);
+    const debouncedValue = useDebounce(searchValue, 800);
 
     const handleClear = () => {
         setSearchValue('');
@@ -40,7 +40,7 @@ function Search() {
     };
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -48,17 +48,22 @@ function Search() {
         setLoading(true);
 
         const fetchApi = async () => {
-            const result = await searchServices.search(debounced);
+            const result = await searchServices.search(debouncedValue);
 
             setSearchResult(result);
             setLoading(false);
         };
 
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
+
+    //Remove popper when routing to other pages
+    const handleRemovePopper = () => {
+        setShowSearchResult(false);
+    };
 
     return (
-        //Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context. 
+        //Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
         <div>
             <HeadlessTippy
                 interactive
@@ -69,7 +74,7 @@ function Search() {
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((result) => (
-                                <AccountItem key={result.id} data={result} />
+                                <AccountItem onClick={handleRemovePopper} key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
                     </div>
@@ -88,7 +93,7 @@ function Search() {
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
-    
+
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                     <button className={cx('search-btn')}>
                         <SearchIcon />

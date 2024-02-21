@@ -40,6 +40,11 @@ function Menu({ items = [], children, hideOnClick = 'false', onChange = defaultF
         });
     };
 
+    //Back to first page
+    const handleBack= () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    }
+
     return (
         <Tippy
             hideOnClick={hideOnClick} // Truyền qua props vì có menu ta muốn click ẩn, có cái muốn click vẫn hiện
@@ -54,9 +59,7 @@ function Menu({ items = [], children, hideOnClick = 'false', onChange = defaultF
                         {history.length > 1 && (
                             <Header
                                 title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
+                                onBack={handleBack}
                             />
                         )}
                         <div className={cx('menu-body')}>{renderItem()}</div>
