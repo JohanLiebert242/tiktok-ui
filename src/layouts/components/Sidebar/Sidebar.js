@@ -13,6 +13,7 @@ import {
     ActiveLiveIcon,
 } from '~/components/Icons';
 import Images from '~/components/Images';
+import FollowingAccount from '~/components/FollowingAccount';
 
 const cx = classNames.bind(styles);
 
@@ -24,25 +25,25 @@ function Sidebar() {
                 <Menu>
                     <MenuItem
                         to={config.routes.home}
-                        title="For You"
+                        title="Dành cho bạn"
                         icon={<HomeIcon />}
                         activeIcon={<ActiveHomeIcon />}
                     />
                     <MenuItem
                         to={config.routes.following}
-                        title="Following"
+                        title="Đang follow"
                         icon={<UserGroupIcon />}
                         activeIcon={<ActiveUserGroupIcon />}
                     />
                     <MenuItem
                         to={config.routes.friends}
-                        title="Friends"
+                        title="Bạn bè"
                         icon={<UserGroupIcon />}
                         activeIcon={<ActiveUserGroupIcon />}
                     />
                     <MenuItem
                         to={config.routes.explore}
-                        title="Explore"
+                        title="Khám phá"
                         icon={<CompassIcon />}
                         activeIcon={<ActiveCompassIcon />}
                     />
@@ -54,7 +55,7 @@ function Sidebar() {
                     />
                     <MenuItem
                         to={config.routes.profile}
-                        title="Profile"
+                        title="Hồ sơ"
                         icon={
                             currentUser ? (
                                 <Images
@@ -69,6 +70,7 @@ function Sidebar() {
                         }
                     />
                 </Menu>
+                <FollowingAccount currentUser={currentUser} label="Các tài khoản đang follow" />
             </aside>
         </div>
     );

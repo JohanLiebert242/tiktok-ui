@@ -1,3 +1,7 @@
+.nav {
+    margin-bottom: 8px;
+}
+
 .menu-item {
     display: flex;
     align-items: center;
@@ -8,7 +12,6 @@
     font-weight: 700;
     font-size: 1.8rem;
     line-height: 2.4rem;
-    margin-left: 8px;
     transition: background-color 200ms ease-in-out 0s;
 
     &.active {

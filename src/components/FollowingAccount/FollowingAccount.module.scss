@@ -1,0 +1,71 @@
+.wrapper {
+    --border-color: rgba(22, 24, 35, 0.12);
+    --text-thin: rgba(22, 24, 35, 0.75);
+
+    padding: 16px 0 16px 8px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.label {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--text-thin);
+    margin-bottom: 8px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 8px 8px 0;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.nickname {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+}
+.name {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: var(--text-thin);
+}
+
+.view-more {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    cursor: pointer;
+}
+
+.login-reminder {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 11px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+}
