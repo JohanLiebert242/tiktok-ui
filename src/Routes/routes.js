@@ -8,6 +8,8 @@ import Home from '~/Pages/Home';
 import Upload from '~/Pages/Upload';
 import Profile from '~/Pages/Profile';
 import Live from '~/Pages/Live';
+import Friends from '~/Pages/Friends';
+import Explore from '~/Pages/Explore';
 
 //Public Routes
 const publicRoutes = [
@@ -31,6 +33,14 @@ const publicRoutes = [
     {
         path: config.routes.live,
         component: Live,
+    },
+    {
+        path: config.routes.friends,
+        component: Friends,
+    },
+    {
+        path: config.routes.explore,
+        component: Explore,
     },
 ];
 

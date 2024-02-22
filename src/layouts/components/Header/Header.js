@@ -162,7 +162,7 @@ function Header() {
                                 className={cx('user-avatar')}
                                 fallback="https://i.pinimg.com/564x/44/0f/13/440f137616e360f94ad235246205c8ae.jpg"
                             />
-                        ) : (
+                        ) :  (
                             <button className={cx('more-icon')}>{<FontAwesomeIcon icon={faEllipsisVertical} />}</button>
                         )}
                     </Menu>
